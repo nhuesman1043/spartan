@@ -1,0 +1,35 @@
+#!/bin/bash
+
+# Regex for branch naming standard
+branch_regex="^(feature|fix|chore|refactor|hotfix|release)\/[a-z0-9\-]+$"
+
+# Get the current branch name
+current_branch=$(git rev-parse --abbrev-ref HEAD)
+
+# Skip validation for master branch
+if [[ "$current_branch" == "master" ]]; then
+    echo "⚠️ Skipping branch name validation for '$current_branch'."
+    exit 0
+fi
+
+# Validate the branch name against the regex
+if ! [[ "$current_branch" =~ $branch_regex ]]; then
+    echo "🚫 ERROR: Branch name '$current_branch' does not follow the standard naming convention."
+    echo ""
+    echo "📋 Expected format:"
+    echo "   <type>/<scope>"
+    echo ""
+    echo "🛠️ Types: feature | fix | chore | refactor | hotfix | release"
+    echo "🔍 Scope: Lowercase words separated by hyphens (e.g., navbar, auth-token)"
+    echo ""
+    echo "✅ Examples:"
+    echo "   feature/navbar"
+    echo "   fix/auth-token"
+    echo "   chore/update-dependencies"
+    echo ""
+    exit 1
+fi
+
+# If validation passes
+echo "✅ Branch name validated successfully!"
+exit 0
