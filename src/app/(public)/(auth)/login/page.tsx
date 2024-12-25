@@ -15,7 +15,7 @@ Modification History:
 import { LoginCard } from "@/components/(public)/(auth)/_login/login-card"
 
 // Mantine
-import { Center } from "@mantine/core"
+import { Container, Center } from "@mantine/core"
 
 // ========================================
 // LOGIN PAGE
@@ -24,8 +24,10 @@ import { Center } from "@mantine/core"
 export default function LoginPage() {
 	// Render
 	return (
-		<Center h="1000">
-			<LoginCard />
-		</Center>
+		<Container>
+			<Center h={150}>
+				<LoginCard />
+			</Center>
+		</Container>
 	)
 }
