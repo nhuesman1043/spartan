@@ -33,7 +33,7 @@ import { login } from "@/lib/server/auth"
 export function LoginCard(props: PaperProps) {
 	// Render
 	return (
-		<Paper radius="md" p="xl" w="500" withBorder {...props}>
+		<Paper radius="sm" p="xl" w="500" withBorder {...props} shadow="lg">
 			<Text size="lg" fw={500}>
 				Welcome to Spartan, login with
 			</Text>
